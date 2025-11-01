@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  solfuzz:
+    build: .
+    image: solfuzz:latest
+    command: ["solfuzz", "doctor"]
+    working_dir: /app
+    volumes:
+      - ./:/app
+
+

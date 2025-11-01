@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "solfuzz"
+version = "0.1.0"
+description = "Python-based EVM smart contract fuzzer with echidna_* property support"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+  { name = "Your Name" }
+]
+keywords = ["ethereum", "evm", "fuzzing", "solidity", "security"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+dependencies = [
+  "click>=8.1",
+  "pyyaml>=6.0.1",
+  "hypothesis>=6.98",
+  "web3>=6.11",
+  "eth-tester>=0.9.0b1",
+  "py-evm>=0.10.1b1",
+  "py-solc-x>=1.1.1",
+]
+
+[project.urls]
+Homepage = "https://example.com/solfuzz"
+Repository = "https://example.com/solfuzz/repo"
+
+[project.scripts]
+solfuzz = "solfuzz.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["solfuzz*"]
+
+

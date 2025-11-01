@@ -1,3 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+*.egg
+dist/
+build/
+.pytest_cache/
+.hypothesis/
+
+# IDE
+.vscode/
+.idea/
+
+# Local env
+.env
+
+# Artifacts
+artifacts/
+.solfuzz/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
