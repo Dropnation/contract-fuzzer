@@ -1,0 +1,24 @@
+solidity:
+  sources:
+    - contracts/
+  remappings: []
+  evm_version: "shanghai"
+  optimize: true
+  runs: 200
+
+fuzz:
+  max_steps: 10000
+  time_budget_sec: 60
+  stop_on_fail: true
+  seed: null
+  call_sequence_len: [1, 6]
+  include_functions: ["*"]
+  exclude_functions: ["echidna_*"]
+  gas_limit: 8000000
+
+report:
+  dir: "artifacts"
+  junit_xml: false
+  verbose: true
+
+
