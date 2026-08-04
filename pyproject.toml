@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [
-  { name = "Your Name" }
+  { name = "Dropnation" }
 ]
 keywords = ["ethereum", "evm", "fuzzing", "solidity", "security"]
 classifiers = [
