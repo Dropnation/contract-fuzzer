@@ -6,6 +6,7 @@ Python-based smart contract fuzzer for EVM. It compiles Solidity sources, discov
 
 Requirements:
 - Python 3.9+
+- pip 26+
 - Windows/macOS/Linux
 
 Install in editable mode:
