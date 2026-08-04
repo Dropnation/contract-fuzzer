@@ -1,4 +1,4 @@
-solidity:
+solidity: 
   sources:
     - contracts/
   remappings: []
