@@ -1,4 +1,4 @@
-# Solfuzz
+# Solfuzz 
 
 Python-based smart contract fuzzer for EVM. It compiles Solidity sources, discovers property functions named `echidna_*`, executes random sequences of public/external calls, and checks that all properties hold after each step. Runs locally without Docker; Docker files are included only for convenience.
 
