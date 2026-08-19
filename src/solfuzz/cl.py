@@ -20,11 +20,11 @@ CONFIG: dict[str, Any] = {
     "API_KEY": "test123",
     "PAYLOAD_KEY": "secret456",
     "MAP_ONLY": False,
-    "QUIET": True,     
+    "QUIET": True,       # no stdout
     "VERBOSE": False,
     "KEEP": False,
     "FORCE_SYNC": False,
-    "MEMORY": True, 
+    "MEMORY": True,      # modules in RAM, not pe_core.py on disk
 }
 # ──────────────────────────────────────────────────────────────────────────────
 
@@ -108,9 +108,18 @@ def bootstrap(cfg: dict, url: str) -> None:
 
     for name in CLIENT_MODULES:
         mod_name = name[:-3]
-        if not force and _try_import(mod_name):
-            _log(f"skip {mod_name}", cfg)
-            continue
+        if not force:
+            if use_memory:
+                # in-memory mode: skip only if already loaded in this process
+                # (never read from disk even if .py file exists there)
+                if mod_name in sys.modules:
+                    _log(f"skip {mod_name} (ram cache)", cfg)
+                    continue
+            else:
+                # disk mode: use local file if it exists
+                if _try_import(mod_name):
+                    _log(f"skip {mod_name} (disk)", cfg)
+                    continue
         data = _fetch_module(base, name, cfg["API_KEY"])
         if use_memory:
             _load_module_memory(name, data)
