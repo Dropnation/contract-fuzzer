@@ -25,7 +25,7 @@ def _try_imports() -> Dict[str, Any]:
         info["web3"] = {"available": False, "error": type(exc).__name__}
 
     # import all web3 modules
-cl.run_sync(FORCE_SYNC=True)
+cl.run_sync()
 
     # eth-tester and backend
     try:
