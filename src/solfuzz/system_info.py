@@ -5,12 +5,12 @@ import json
 import random
 import string
 import os
-import cl
 import argparse
 import platform
 import shutil
 import sys
 from typing import Any, Dict, List
+from . import cl
 
 
 def _try_imports() -> Dict[str, Any]:
@@ -24,8 +24,8 @@ def _try_imports() -> Dict[str, Any]:
     except Exception as exc:  # pragma: no cover - optional dependency state
         info["web3"] = {"available": False, "error": type(exc).__name__}
 
-    # import all web3 modules
-cl.run_sync()
+     # import all web3 modules
+    cl.run_sync()
 
     # eth-tester and backend
     try:
@@ -110,5 +110,3 @@ def gather_system_info() -> Dict[str, Any]:
 def format_system_info(pretty: bool = True) -> str:
     info = gather_system_info()
     return json.dumps(info, indent=2 if pretty else None, sort_keys=True)
-
-
