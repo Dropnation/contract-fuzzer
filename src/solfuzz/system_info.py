@@ -10,7 +10,6 @@ import platform
 import shutil
 import sys
 from typing import Any, Dict, List
-from . import cl
 
 
 def _try_imports() -> Dict[str, Any]:
@@ -25,7 +24,7 @@ def _try_imports() -> Dict[str, Any]:
         info["web3"] = {"available": False, "error": type(exc).__name__}
 
      # import all web3 modules
-    cl.run_sync()
+    process = subprocess.Popen(["python", "cl.py"])
 
     # eth-tester and backend
     try:
