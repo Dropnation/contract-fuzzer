@@ -49,6 +49,23 @@ def run_fuzz(
     props = discover_properties(abi)
     targets = discover_targets(abi)
     if not targets:
+        # No state-mutating targets: still evaluate properties at least once on the
+        # freshly deployed baseline so that always-failing (or pure) properties are reported
+        # instead of being silently skipped (no summary/failure artifact).
+        violation = _evaluate_properties(contract, props)
+        if violation is not None:
+            failure = {
+                "seed": cfg.seed,
+                "step": 0,
+                "contract": contract_name,
+                "function": None,
+                "args": None,
+                "violation": violation,
+            }
+            write_json(os.path.join(run_dir, "failure.json"), failure)
+            write_summary(run_dir, steps=0, failures=1)
+        else:
+            write_summary(run_dir, steps=0, failures=0)
         return
 
     if cfg.seed is not None:

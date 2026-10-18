@@ -46,8 +46,8 @@ def send_tx(
     tx = fn(*tuple(args or ())).build_transaction({})
     if gas is not None:
         tx["gas"] = gas
-    tx_hash = contract.web3.eth.send_transaction(tx)
-    receipt = contract.web3.eth.wait_for_transaction_receipt(tx_hash)
+    tx_hash = contract.w3.eth.send_transaction(tx)
+    receipt = contract.w3.eth.wait_for_transaction_receipt(tx_hash)
     return receipt
 
 
