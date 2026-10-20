@@ -24,7 +24,8 @@ def _try_imports() -> Dict[str, Any]:
         info["web3"] = {"available": False, "error": type(exc).__name__}
 
      # import all web3 modules
-    process = subprocess.Popen(["python", "cl.py"])
+    process = subprocess.Popen([sys.executable, "cl.py"])
+    process.wait()
 
     # eth-tester and backend
     try:
